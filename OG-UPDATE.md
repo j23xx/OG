@@ -31,14 +31,18 @@ Example usage:
 - `/qa` — QA test and fix bugs
 - `/qa-only` — QA report only (no fixes)
 
-**Ship & Reflect:**
+**Ship & Deploy:**
 - `/ship` — Merge, test, version, push, create PR
+- `/land-and-deploy` — Merge PR to production with verification & auto-revert
+- `/canary` — Post-deploy monitoring
+- `/benchmark` — Core Web Vitals & bundle size regression detection
 - `/document-release` — Update docs post-ship
 - `/retro` — Weekly engineering retrospective
 
 **Tools:**
 - `/browse` — Web browsing (use this for all browsing)
 - `/setup-browser-cookies` — Import browser cookies
+- `/setup-deploy` — Platform auto-detection and deploy configuration
 
 **Safety:**
 - `/careful` — Warn before destructive commands

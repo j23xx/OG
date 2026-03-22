@@ -20,7 +20,7 @@ OG understands dependencies (review before ship, cookies before browse) and para
 ## Prerequisites
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and working
-- [gstack](https://github.com/garrytan/gstack) skills installed in Claude Code
+- [gstack](https://github.com/garrytan/gstack) v0.9.9+ installed in Claude Code
 
 ## Install
 
@@ -70,10 +70,13 @@ Type `/OG` followed by what you want to do:
 | `/qa` | QA test and fix bugs |
 | `/qa-only` | QA report only (no fixes) |
 
-**Ship & Reflect**
+**Ship & Deploy**
 | Command | What it does |
 |---------|-------------|
 | `/ship` | Merge, test, version, push, create PR |
+| `/land-and-deploy` | Merge PR to production with verification & auto-revert |
+| `/canary` | Post-deploy monitoring |
+| `/benchmark` | Core Web Vitals & bundle size regression detection |
 | `/document-release` | Update docs post-ship |
 | `/retro` | Weekly engineering retrospective |
 
@@ -82,6 +85,7 @@ Type `/OG` followed by what you want to do:
 |---------|-------------|
 | `/browse` | Web browsing |
 | `/setup-browser-cookies` | Import browser cookies |
+| `/setup-deploy` | Platform auto-detection and deploy configuration |
 
 **Safety**
 | Command | What it does |
@@ -108,6 +112,9 @@ Type `/OG` followed by what you want to do:
 
 # Ship with docs
 /OG ship this and update the docs
+
+# Full deploy pipeline
+/OG review, ship, deploy, and monitor
 ```
 
 ## License

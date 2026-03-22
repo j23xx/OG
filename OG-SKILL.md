@@ -42,7 +42,7 @@ Read the user's prompt carefully. Identify:
 
 Match the user's request against these categories. A request may match multiple categories.
 
-### Core Skills (15)
+### Core Skills (19)
 
 | Category | Skill | Trigger signals |
 |----------|-------|-----------------|
@@ -57,10 +57,14 @@ Match the user's request against these categories. A request may match multiple 
 | **QA (fix)** | `/qa` | "QA", "test site", "find bugs", "dogfood", "smoke test", "test and fix", "does this work" |
 | **QA (report)** | `/qa-only` | "QA only", "report only", "bugs no fixes", "just report", "QA but don't fix" |
 | **Ship** | `/ship` | "ship", "merge", "push", "create PR", "deploy", "land", "ship it" |
+| **Land & Deploy** | `/land-and-deploy` | "land", "deploy to prod", "merge and deploy", "push to production", "land and deploy" |
+| **Canary** | `/canary` | "canary", "monitor deploy", "post-deploy", "watch production", "check deploy health" |
+| **Benchmark** | `/benchmark` | "benchmark", "performance", "web vitals", "bundle size", "perf regression", "core web vitals" |
 | **Document** | `/document-release` | "document", "update docs", "release notes", "update README", "post-ship docs" |
 | **Retro** | `/retro` | "retro", "retrospective", "week review", "what shipped", "weekly review" |
 | **Browse** | `/browse` | "browse", "navigate", "open URL", "check page", "take screenshot", any raw URL (https://...) |
 | **Cookies** | `/setup-browser-cookies` | "cookies", "import cookies", "auth session", "login session", "authenticate browser" |
+| **Setup Deploy** | `/setup-deploy` | "setup deploy", "configure deploy", "deploy config", "deploy platform", "setup CI/CD" |
 
 ### Power Tools (6)
 
@@ -102,10 +106,14 @@ Run them **sequentially** in the correct order. Dependency chains:
 
 ```
 /setup-browser-cookies → /browse or /qa or /qa-only or /design-review
-/review → /ship                    (review must pass before shipping)
-/ship → /document-release          (docs update after shipping)
+/setup-deploy → /land-and-deploy    (deploy config before deploying)
+/review → /ship                     (review must pass before shipping)
+/ship → /land-and-deploy            (ship before deploying to prod)
+/land-and-deploy → /canary          (monitor after deploying)
+/ship → /document-release           (docs update after shipping)
 /review → /ship → /document-release (full pipeline)
-Any work skills → /retro           (retro is always last)
+/review → /ship → /land-and-deploy → /canary (full deploy pipeline)
+Any work skills → /retro            (retro is always last)
 ```
 
 ### Mode toggles (set before work skills)
@@ -185,14 +193,18 @@ I couldn't determine which gstack skill to use. Here's what's available:
 - /qa — QA test and fix bugs
 - /qa-only — QA report only (no fixes)
 
-**Ship & Reflect**
+**Ship & Deploy**
 - /ship — Merge, test, version, push, create PR
+- /land-and-deploy — Merge PR to production with verification & auto-revert
+- /canary — Post-deploy monitoring
+- /benchmark — Core Web Vitals & bundle size regression detection
 - /document-release — Update docs post-ship
 - /retro — Weekly engineering retrospective
 
 **Tools**
 - /browse — Headless browser interaction
 - /setup-browser-cookies — Import browser cookies
+- /setup-deploy — Platform auto-detection and deploy configuration
 
 **Safety**
 - /careful — Warn before destructive commands
