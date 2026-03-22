@@ -35,6 +35,15 @@ If gstack IS installed, do the following:
 2. Read ~/.claude/skills/OG/OG-UPDATE.md and add its contents to my CLAUDE.md (create CLAUDE.md if it doesn't exist)
 ```
 
+## Update
+
+Open Claude Code and paste:
+
+```
+Run: cd ~/.claude/skills/OG && git pull
+Then read ~/.claude/skills/OG/OG-UPDATE.md and update my CLAUDE.md to match
+```
+
 ## How to use
 
 ### Quick start
