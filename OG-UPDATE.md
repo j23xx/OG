@@ -19,12 +19,21 @@ Example usage:
 - `/plan-ceo-review` — CEO/founder-mode plan review
 - `/plan-eng-review` — Engineering plan review
 - `/plan-design-review` — Design plan review
+- `/plan-devex-review` — Developer experience plan review
+- `/autoplan` — Automated plan review pipeline (CEO + design + eng + DX)
 - `/design-consultation` — Design consultation
+
+**Design:**
+- `/design-shotgun` — Explore multiple visual design variants
+- `/design-html` — Convert mockup/design to production HTML
+- `/design-review` — Visual QA and design audit
 
 **Build & Review:**
 - `/review` — Pre-landing code review
 - `/investigate` — Root cause debugging
-- `/design-review` — Visual QA and design audit
+- `/cso` — Security audit (OWASP Top 10 + STRIDE threat modeling)
+- `/devex-review` — Live developer experience audit
+- `/health` — Code quality dashboard and score
 - `/codex` — Second opinion from OpenAI
 
 **Test:**
@@ -39,10 +48,14 @@ Example usage:
 - `/document-release` — Update docs post-ship
 - `/retro` — Weekly engineering retrospective
 
-**Tools:**
-- `/browse` — Web browsing (use this for all browsing)
+**Browser & Tools:**
+- `/browse` — Headless browser automation (use this for all browsing)
+- `/open-gstack-browser` — Headed browser with live sidebar
+- `/pair-agent` — Connect a remote agent to your browser
 - `/setup-browser-cookies` — Import browser cookies
 - `/setup-deploy` — Platform auto-detection and deploy configuration
+- `/checkpoint` — Save and resume working state
+- `/learn` — Manage project learnings across sessions
 
 **Safety:**
 - `/careful` — Warn before destructive commands

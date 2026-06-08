@@ -42,7 +42,7 @@ Read the user's prompt carefully. Identify:
 
 Match the user's request against these categories. A request may match multiple categories.
 
-### Core Skills (19)
+### Plan & Think Skills (6)
 
 | Category | Skill | Trigger signals |
 |----------|-------|-----------------|
@@ -50,27 +50,63 @@ Match the user's request against these categories. A request may match multiple 
 | **Plan (CEO)** | `/plan-ceo-review` | "CEO review", "scope", "rethink", "founder mode", "10-star", "think bigger", "expand scope", "strategy review", "is this ambitious enough" |
 | **Plan (Eng)** | `/plan-eng-review` | "eng review", "architecture", "data flow", "edge cases", "test plan", "lock in the plan", "engineering review" |
 | **Plan (Design)** | `/plan-design-review` | "design review the plan", "rate the design", "design dimensions", "design plan review" |
-| **Design** | `/design-consultation` | "design system", "mockup", "design consultation", "typography", "color palette", "visual identity" |
+| **Plan (DX)** | `/plan-devex-review` | "DX review", "devex review", "devex plan review", "developer experience review", "API design review", "developer-facing plan" |
+| **AutoPlan** | `/autoplan` | "autoplan", "auto review", "run all reviews", "full automated review", "review plan automatically", "make decisions for me" |
+
+### Design Skills (4)
+
+| Category | Skill | Trigger signals |
+|----------|-------|-----------------|
+| **Design System** | `/design-consultation` | "design system", "mockup", "design consultation", "typography", "color palette", "visual identity" |
+| **Design Variants** | `/design-shotgun` | "design variants", "explore designs", "show me options", "visual brainstorm", "design options", "different designs" |
+| **Design → HTML** | `/design-html` | "design to HTML", "finalize design", "turn into HTML", "build the page", "implement design", "code the mockup", "build the design" |
+| **Design QA** | `/design-review` | "design audit", "design fixes", "visual QA", "spacing issues", "design slop", "visual inconsistency" |
+
+### Build & Review Skills (6)
+
+| Category | Skill | Trigger signals |
+|----------|-------|-----------------|
 | **Review** | `/review` | "review", "PR review", "diff", "pre-landing", "code audit", "check my code", "review this PR" |
 | **Debug** | `/investigate` | "investigate", "debug", "root cause", "trace", "why is this broken", "find the bug" |
-| **Design QA** | `/design-review` | "design audit", "design fixes", "visual QA", "spacing issues", "design slop", "visual inconsistency" |
+| **Security** | `/cso` | "security audit", "CSO review", "OWASP", "vulnerability scan", "threat model", "security check", "pentest" |
+| **DevEx Audit** | `/devex-review` | "test the DX", "DX audit", "developer experience test", "onboarding audit", "try the onboarding", "DX boomerang" |
+| **Health** | `/health` | "health check", "code quality", "quality score", "how healthy is the codebase", "run all checks" |
+| **Second Opinion** | `/codex` | "second opinion", "codex", "OpenAI review", "adversarial review", "challenge this" |
+
+### Test Skills (2)
+
+| Category | Skill | Trigger signals |
+|----------|-------|-----------------|
 | **QA (fix)** | `/qa` | "QA", "test site", "find bugs", "dogfood", "smoke test", "test and fix", "does this work" |
 | **QA (report)** | `/qa-only` | "QA only", "report only", "bugs no fixes", "just report", "QA but don't fix" |
+
+### Ship & Deploy Skills (6)
+
+| Category | Skill | Trigger signals |
+|----------|-------|-----------------|
 | **Ship** | `/ship` | "ship", "merge", "push", "create PR", "deploy", "land", "ship it" |
 | **Land & Deploy** | `/land-and-deploy` | "land", "deploy to prod", "merge and deploy", "push to production", "land and deploy" |
 | **Canary** | `/canary` | "canary", "monitor deploy", "post-deploy", "watch production", "check deploy health" |
 | **Benchmark** | `/benchmark` | "benchmark", "performance", "web vitals", "bundle size", "perf regression", "core web vitals" |
 | **Document** | `/document-release` | "document", "update docs", "release notes", "update README", "post-ship docs" |
 | **Retro** | `/retro` | "retro", "retrospective", "week review", "what shipped", "weekly review" |
-| **Browse** | `/browse` | "browse", "navigate", "open URL", "check page", "take screenshot", any raw URL (https://...) |
-| **Cookies** | `/setup-browser-cookies` | "cookies", "import cookies", "auth session", "login session", "authenticate browser" |
-| **Setup Deploy** | `/setup-deploy` | "setup deploy", "configure deploy", "deploy config", "deploy platform", "setup CI/CD" |
 
-### Power Tools (6)
+### Browser & Tools Skills (7)
 
 | Category | Skill | Trigger signals |
 |----------|-------|-----------------|
-| **Second opinion** | `/codex` | "second opinion", "codex", "OpenAI review", "adversarial review", "challenge this" |
+| **Browse (headless)** | `/browse` | "browse", "navigate", "open URL", "check page", "take screenshot", any raw URL (https://...) |
+| **Browse (headed)** | `/open-gstack-browser` | "open browser", "real browser", "headed browser", "open chrome", "launch browser", "show me the browser", "watch me browse" |
+| **Pair Agent** | `/pair-agent` | "pair agent", "connect agent", "share browser", "remote browser", "give browser access", "multi-agent" |
+| **Cookies** | `/setup-browser-cookies` | "cookies", "import cookies", "auth session", "login session", "authenticate browser" |
+| **Setup Deploy** | `/setup-deploy` | "setup deploy", "configure deploy", "deploy config", "deploy platform", "setup CI/CD" |
+| **Checkpoint** | `/checkpoint` | "checkpoint", "save progress", "resume", "where was I", "pick up where I left off", "save state" |
+| **Learnings** | `/learn` | "what have we learned", "show learnings", "prune learnings", "session memory", "past patterns", "remember this" |
+
+### Safety & Meta Skills (5)
+
+| Category | Skill | Trigger signals |
+|----------|-------|-----------------|
 | **Safety** | `/careful` | "careful mode", "warn destructive", "be careful" |
 | **Scope lock** | `/freeze` | "freeze", "lock directory", "restrict edits", "only edit this folder" |
 | **Full safety** | `/guard` | "guard", "safety mode", "guard mode", "maximum safety" |
@@ -95,25 +131,37 @@ Launch them **in parallel** using the `Agent` tool. Each agent gets:
 - `/plan-ceo-review` + `/plan-design-review` — strategy vs design lens
 - `/plan-eng-review` + `/plan-design-review` — architecture vs design lens
 - `/plan-ceo-review` + `/plan-eng-review` + `/plan-design-review` — all three perspectives
+- `/plan-ceo-review` + `/plan-eng-review` + `/plan-design-review` + `/plan-devex-review` — all four perspectives (or use `/autoplan` to run these automatically)
 - `/review` + `/qa` — code analysis vs browser testing
 - `/review` + `/design-review` — code vs visual audit
 - `/qa` + `/design-review` — functional vs visual testing
 - `/review` + `/qa` + `/design-review` — all three review types
 - `/review` + `/codex` — internal review + second opinion
+- `/review` + `/cso` — code review + security audit
+- `/qa` + `/devex-review` — functional testing + developer experience audit
+- `/health` + `/review` — quality dashboard + code review
+- `/design-review` + `/design-shotgun` — audit existing design + explore alternatives
+
+**Note on `/autoplan`:** When the user wants all plan reviews (CEO + eng + design + DX), prefer routing to `/autoplan` over launching four parallel agents. `/autoplan` handles sequencing and decision-making automatically.
 
 ### Multiple dependent skills detected
 Run them **sequentially** in the correct order. Dependency chains:
 
 ```
 /setup-browser-cookies → /browse or /qa or /qa-only or /design-review
-/setup-deploy → /land-and-deploy    (deploy config before deploying)
-/review → /ship                     (review must pass before shipping)
-/ship → /land-and-deploy            (ship before deploying to prod)
-/land-and-deploy → /canary          (monitor after deploying)
-/ship → /document-release           (docs update after shipping)
-/review → /ship → /document-release (full pipeline)
+/setup-deploy → /land-and-deploy          (deploy config before deploying)
+/review → /ship                           (review must pass before shipping)
+/cso → /ship                             (security check before shipping)
+/ship → /land-and-deploy                 (ship before deploying to prod)
+/land-and-deploy → /canary               (monitor after deploying)
+/ship → /document-release                (docs update after shipping)
+/review → /ship → /document-release      (full pipeline)
 /review → /ship → /land-and-deploy → /canary (full deploy pipeline)
-Any work skills → /retro            (retro is always last)
+/design-shotgun → /design-html           (pick a variant, then build it)
+/plan-design-review → /design-shotgun → /design-html (full design pipeline)
+/devex-review → /design-html            (audit DX gaps, then fix with HTML)
+/plan-devex-review → /devex-review      (plan DX expectations, then verify live)
+Any work skills → /retro                 (retro is always last)
 ```
 
 ### Mode toggles (set before work skills)
@@ -179,14 +227,21 @@ I couldn't determine which gstack skill to use. Here's what's available:
 - /plan-ceo-review — CEO/founder-mode plan review
 - /plan-eng-review — Engineering plan review
 - /plan-design-review — Design plan review
+- /plan-devex-review — Developer experience plan review
+- /autoplan — Run all plan reviews automatically (CEO + design + eng + DX)
 
 **Design**
-- /design-consultation — Build a design system
+- /design-consultation — Build a design system from scratch
+- /design-shotgun — Explore multiple visual design variants
+- /design-html — Convert approved mockup/design to production HTML
 - /design-review — Visual QA and design audit
 
 **Build & Review**
 - /review — Pre-landing code review
 - /investigate — Root cause debugging
+- /cso — Security audit (OWASP Top 10 + STRIDE)
+- /devex-review — Live developer experience audit
+- /health — Code quality dashboard and score
 - /codex — Second opinion from OpenAI
 
 **Test**
@@ -201,10 +256,14 @@ I couldn't determine which gstack skill to use. Here's what's available:
 - /document-release — Update docs post-ship
 - /retro — Weekly engineering retrospective
 
-**Tools**
-- /browse — Headless browser interaction
+**Browser & Tools**
+- /browse — Headless browser automation
+- /open-gstack-browser — Headed browser with live sidebar (watch it work)
+- /pair-agent — Connect a remote agent to your browser
 - /setup-browser-cookies — Import browser cookies
 - /setup-deploy — Platform auto-detection and deploy configuration
+- /checkpoint — Save and resume working state
+- /learn — Manage project learnings across sessions
 
 **Safety**
 - /careful — Warn before destructive commands

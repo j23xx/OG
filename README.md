@@ -20,7 +20,7 @@ OG understands dependencies (review before ship, cookies before browse) and para
 ## Prerequisites
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and working
-- [gstack](https://github.com/garrytan/gstack) v0.9.9+ installed in Claude Code
+- [gstack](https://github.com/garrytan/gstack) v1.0+ installed in Claude Code
 
 ## Install
 
@@ -63,14 +63,25 @@ Type `/OG` followed by what you want to do:
 | `/plan-ceo-review` | CEO/founder-mode plan review |
 | `/plan-eng-review` | Engineering plan review |
 | `/plan-design-review` | Design plan review |
+| `/plan-devex-review` | Developer experience plan review |
+| `/autoplan` | Run all plan reviews automatically (CEO + design + eng + DX) |
 | `/design-consultation` | Design consultation |
+
+**Design**
+| Command | What it does |
+|---------|-------------|
+| `/design-shotgun` | Explore multiple visual design variants |
+| `/design-html` | Convert approved mockup/design to production HTML |
+| `/design-review` | Visual QA and design audit |
 
 **Build & Review**
 | Command | What it does |
 |---------|-------------|
 | `/review` | Pre-landing code review |
 | `/investigate` | Root cause debugging |
-| `/design-review` | Visual QA and design audit |
+| `/cso` | Security audit (OWASP Top 10 + STRIDE threat modeling) |
+| `/devex-review` | Live developer experience audit |
+| `/health` | Code quality dashboard and score |
 | `/codex` | Second opinion from OpenAI |
 
 **Test**
@@ -89,12 +100,16 @@ Type `/OG` followed by what you want to do:
 | `/document-release` | Update docs post-ship |
 | `/retro` | Weekly engineering retrospective |
 
-**Tools**
+**Browser & Tools**
 | Command | What it does |
 |---------|-------------|
-| `/browse` | Web browsing |
+| `/browse` | Headless browser automation |
+| `/open-gstack-browser` | Headed browser with live sidebar (watch it work) |
+| `/pair-agent` | Connect a remote agent to your browser |
 | `/setup-browser-cookies` | Import browser cookies |
 | `/setup-deploy` | Platform auto-detection and deploy configuration |
+| `/checkpoint` | Save and resume working state |
+| `/learn` | Manage project learnings across sessions |
 
 **Safety**
 | Command | What it does |
